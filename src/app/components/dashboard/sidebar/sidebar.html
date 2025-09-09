@@ -1,1 +1,122 @@
-<p>sidebar works!</p>
+<!-- Sidebar oscuro, diferencia clara con el contenido -->
+<nav class="h-screen w-64 bg-surface-900 text-textc-base border-r border-white/5 flex flex-col"
+     aria-label="Sidebar principal">
+
+  <!-- Header / Logo -->
+  <div class="h-16 flex items-center px-4 border-b border-white/5">
+    <a class="flex items-center gap-2 font-extrabold tracking-tight">
+      <span class="inline-block h-6 w-6 rounded bg-brand-500"></span>
+      <span>FITCOMPANY</span>
+    </a>
+  </div>
+
+  <!-- Menú (scrollable) -->
+  <ul role="menu" class="flex-1 overflow-y-auto py-3">
+    <!-- Item activo de ejemplo -->
+    <li role="none">
+      <a role="menuitem"
+         aria-current="page"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                bg-surface-800 text-white hover:bg-surface-700 transition
+                focus:outline-none focus:ring-2 focus:ring-brand-500"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Overview</span>
+        <span class="ml-auto h-2 w-2 rounded-full bg-brand-500"></span>
+      </a>
+    </li>
+
+    <!-- Resto de items -->
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition
+                focus:outline-none focus:ring-2 focus:ring-brand-500"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Formularios</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition
+                focus:outline-none focus:ring-2 focus:ring-brand-500"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Compras</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Categorías</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Roles</span>
+      </a>
+    </li>
+
+    <li role="none" class="my-3 mx-3 h-px bg-white/5"></li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Reporte de Ventas</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Ventas</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Permisos</span>
+      </a>
+    </li>
+
+    <li role="none">
+      <a role="menuitem"
+         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
+                text-textc-base hover:bg-surface-700 transition"
+         href="#">
+        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
+        <span class="truncate">Unidades de Medida</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Footer (acción secundaria) -->
+  <div class="border-t border-white/5 p-3">
+    <button class="w-full rounded-lg bg-brand-600/10 text-brand-500 px-3 py-2 text-sm
+                   hover:bg-brand-600/20 transition">
+      Cerrar sesión
+    </button>
+  </div>
+</nav>
