@@ -19,7 +19,7 @@ interface MenuItem {
 export class Sidebar {
 
   menu: MenuItem[] = [
-    { label: 'Overview',    icon: 'LayoutDashboard',         link: 'dashboard' },
+    { label: 'Overview',    icon: 'LayoutDashboard',         link: 'overview' },
     { label: 'Compras',     icon: 'ShoppingCart', link: 'compras' },
     { label: 'Ventas',      icon: 'ShoppingBasket', link: 'ventas' },
     { label: 'Categorías',  icon: 'ChartBarStacked',     link: 'categorias' },
