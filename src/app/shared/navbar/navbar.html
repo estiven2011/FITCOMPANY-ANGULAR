@@ -1,1 +1,17 @@
-<p>navbar works!</p>
+<header class="sticky top-0 z-50 bg-surface-900/80 backdrop-blur border-b border-white/5">
+  <nav class="container-page h-14 flex items-center justify-between">
+    <a class="font-extrabold tracking-wide" routerLink="/">FITCOMPANY</a>
+
+    <ul class="hidden sm:flex items-center gap-6">
+      <li><a routerLink="/" fragment="planes" class="hover:text-brand-500 transition">Planes</a></li>
+      <li><a routerLink="/" fragment="servicios" class="hover:text-brand-500 transition">Servicios</a></li>
+      <li><a routerLink="/" fragment="contacto" class="hover:text-brand-500 transition">Redes</a></li>
+    </ul>
+
+    <a *ngIf="router.url !== '/login'" routerLink="/login"
+      class="inline-flex items-center rounded-xl bg-brand-500 text-black px-4 py-2 font-semibold hover:bg-brand-600 transition">
+      Inicia Sesión
+    </a>
+
+  </nav>
+</header>
