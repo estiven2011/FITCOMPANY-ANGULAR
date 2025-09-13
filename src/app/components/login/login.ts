@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Navbar } from '../../shared/navbar/navbar';
@@ -6,7 +7,7 @@ import { Navbar } from '../../shared/navbar/navbar';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [Navbar, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, Navbar, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

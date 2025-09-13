@@ -10,7 +10,11 @@ export const routes: Routes = [
     component: Dashboard,
     children: [
       { path: 'overview', loadComponent: () => import('./components/dashboard/pages/overview/overview').then(m => m.Overview) },
+      { path: 'compras', loadComponent: () => import('./components/dashboard/pages/compras/compras').then(m => m.Compras) },
+      { path: 'ventas', loadComponent: () => import('./components/dashboard/pages/ventas/ventas').then(m => m.Ventas) },
       { path: 'roles', loadComponent: () => import('./components/dashboard/pages/roles/roles').then(m => m.Roles) },
+      { path: 'tipos-identificaciones', loadComponent: () => import('./components/dashboard/pages/tipos-identificaciones/tipos-identificaciones').then(m => m.TiposIdentificaciones) },
+
     ]
   },
 ];

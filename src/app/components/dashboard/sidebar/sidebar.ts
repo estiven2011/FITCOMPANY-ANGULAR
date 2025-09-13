@@ -28,7 +28,7 @@ export class Sidebar {
     { label: 'Perfiles',    icon: 'IdCard',       link: 'perfiles' },
     { label: 'Unidades de Medida',    icon: 'Ruler',        link: 'unidades' },
     { label: 'Permisos',    icon: 'ShieldCheck',  link: 'permisos' },
-    { label: 'Tipos de Identificacion',    icon: 'Fingerprint',  link: 'tipos-id' },
+    { label: 'Tipos de Identificacion',    icon: 'Fingerprint',  link: 'tipos-identificaciones' },
     // { label: 'Reporte de Ventas',    icon: 'Fingerprint',  link: 'tipos-id' },
     // { label: 'Reporte de Compras',    icon: 'Fingerprint',  link: 'tipos-id' },
   ];
