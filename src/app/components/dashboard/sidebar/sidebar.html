@@ -11,129 +11,17 @@
   </div>
 
   <!-- Menú (scrollable) -->
-  <ul role="menu" class="flex-1 overflow-y-auto py-3">
-    <!-- Item activo de ejemplo -->
-    <li role="none">
-      <a role="menuitem"
-         aria-current="page"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                bg-surface-800 text-white hover:bg-surface-700 transition
-                focus:outline-none focus:ring-2 focus:ring-brand-500"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center">
-          <lucide-icon name="layout-dashboard"></lucide-icon>
-        </span>
-        <span class="truncate">Overview</span>
-        <span class="ml-auto h-2 w-2 rounded-full bg-brand-500"></span>
+  <ul role="menu" class="flex-1 overflow-y-auto overflow-x-auto py-3">
+    <li *ngFor="let item of menu">
+      <a [routerLink]="item.link"
+         class="flex items-center gap-3 mx-2 mb-1 px-3 py-2 rounded-lg hover:bg-surface-800">
+        <lucide-icon [name]="item.icon" class="w-5 h-5"></lucide-icon>
+        <span>{{ item.label }}</span>
       </a>
     </li>
-
-    <!-- Resto de items -->
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition
-                focus:outline-none focus:ring-2 focus:ring-brand-500"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center">
-                    <lucide-icon name="book-text" [strokeWidth]="1.25"></lucide-icon>
-
-        </span>
-        <span class="truncate">Formularios</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition
-                focus:outline-none focus:ring-2 focus:ring-brand-500"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center">
-          <lucide-icon name="shopping-cart"></lucide-icon>
-        </span>
-        <span class="truncate">Compras</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center">
-          <lucide-icon name="chart-bar-stacked"></lucide-icon>
-        </span>
-        <span class="truncate">Categorías</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
-        <span class="truncate">Roles</span>
-      </a>
-    </li>
-
-    <li role="none" class="my-3 mx-3 h-px bg-white/5"></li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
-        <span class="truncate">Reporte de Ventas</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center ">
-          <lucide-icon name="shopping-basket"></lucide-icon>
-        </span>
-        <span class="truncate">Ventas</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
-        <span class="truncate">Permisos</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
-        <span class="truncate">Perfiles</span>
-      </a>
-    </li>
-
-    <li role="none">
-      <a role="menuitem"
-         class="mx-2 mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm
-                text-textc-base hover:bg-surface-700 transition"
-         href="#">
-        <span class="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-white/10"></span>
-        <span class="truncate">Unidades de Medida</span>
-      </a>
-    </li>
-    
   </ul>
 
+  
   <!-- Footer (acción secundaria) -->
   <div class="border-t border-white/5 p-3">
     <button class="w-full rounded-lg bg-brand-600/10 text-brand-500 px-3 py-2 text-sm

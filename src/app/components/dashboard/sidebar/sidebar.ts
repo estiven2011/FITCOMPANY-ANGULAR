@@ -24,12 +24,12 @@ export class Sidebar {
     { label: 'Ventas',      icon: 'ShoppingBasket', link: 'ventas' },
     { label: 'Categorías',  icon: 'ChartBarStacked',     link: 'categorias' },
     { label: 'Formulario',  icon: 'BookText',     link: 'formularios' },
-
-    // 🔹 Lo que pediste:
     { label: 'Roles',       icon: 'UserCog',      link: 'roles' },
     { label: 'Perfiles',    icon: 'IdCard',       link: 'perfiles' },
-    { label: 'Unidades',    icon: 'Ruler',        link: 'unidades' },
-
+    { label: 'Unidades de Medida',    icon: 'Ruler',        link: 'unidades' },
     { label: 'Permisos',    icon: 'ShieldCheck',  link: 'permisos' },
+    { label: 'Tipos de Identificacion',    icon: 'Fingerprint',  link: 'tipos-id' },
+    // { label: 'Reporte de Ventas',    icon: 'Fingerprint',  link: 'tipos-id' },
+    // { label: 'Reporte de Compras',    icon: 'Fingerprint',  link: 'tipos-id' },
   ];
 }

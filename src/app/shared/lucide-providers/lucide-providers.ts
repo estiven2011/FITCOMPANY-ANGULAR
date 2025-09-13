@@ -6,7 +6,12 @@ import {
   ShoppingCart,
       ShoppingBasket,
       BookText,
-      ChartBarStacked 
+      ChartBarStacked,
+      UserCog,
+      IdCard,
+      Ruler,
+      ShieldCheck,
+      Fingerprint 
 
 } from "lucide-angular";
 
@@ -18,7 +23,12 @@ export function lucideProviders () {
       ShoppingCart,
       ShoppingBasket,
       BookText,
-      ChartBarStacked 
+      ChartBarStacked,
+      UserCog,
+      IdCard,
+      Ruler,
+      ShieldCheck,
+      Fingerprint 
     })
   );
 }
