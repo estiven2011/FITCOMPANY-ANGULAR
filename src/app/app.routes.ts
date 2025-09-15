@@ -14,6 +14,7 @@ export const routes: Routes = [
       { path: 'ventas', loadComponent: () => import('./components/dashboard/pages/ventas/ventas').then(m => m.Ventas) },
       { path: 'roles', loadComponent: () => import('./components/dashboard/pages/roles/roles').then(m => m.Roles) },
       { path: 'tipos-identificaciones', loadComponent: () => import('./components/dashboard/pages/tipos-identificaciones/tipos-identificaciones').then(m => m.TiposIdentificaciones) },
+      { path: 'perfiles', loadComponent: () => import('./components/dashboard/pages/perfiles/perfiles').then(m => m.Perfiles) },
 
     ]
   },
