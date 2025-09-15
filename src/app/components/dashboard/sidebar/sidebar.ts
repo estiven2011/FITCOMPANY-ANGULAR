@@ -24,7 +24,7 @@ export class Sidebar {
     { label: 'Compras',     icon: 'ShoppingCart', link: 'compras' },
     { label: 'Ventas',      icon: 'ShoppingBasket', link: 'ventas' },
     { label: 'Categorías',  icon: 'ChartBarStacked',     link: 'categorias' },
-    { label: 'Formulario',  icon: 'BookText',     link: 'formularios' },
+    // { label: 'Formulario',  icon: 'BookText',     link: 'formularios' },
     { label: 'Roles',       icon: 'UserCog',      link: 'roles' },
     { label: 'Productos',       icon: 'Box',      link: 'productos' },
     { label: 'Perfiles',    icon: 'IdCard',       link: 'perfiles' },
