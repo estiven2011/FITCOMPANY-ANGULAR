@@ -1,0 +1,130 @@
+<div class="space-y-6">
+  <h2 class="text-center text-xl font-bold">Gestión de Permisos</h2>
+
+  <!-- Card: Asignar permiso -->
+  <section class="mx-auto w-full max-w-3xl rounded-2xl bg-surface-800 border border-white/5 p-6 sm:p-7">
+    <h3 class="text-lg font-semibold text-brand-500 mb-4">Asignar nuevo permiso</h3>
+
+    <form class="space-y-6">
+      <!-- Perfil + Formulario -->
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm mb-1">Perfil <span class="text-brand-500">*</span></label>
+          <select required
+                  class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none focus:border-brand-500">
+            <option selected disabled>Seleccione…</option>
+            <!-- opciones cuando tengas datos -->
+          </select>
+          <p class="mt-1 text-xs text-textc-mute">Campo obligatorio.</p>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Formulario <span class="text-brand-500">*</span></label>
+          <select required
+                  class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none focus:border-brand-500">
+            <option selected disabled>Seleccione…</option>
+            <!-- opciones cuando tengas datos -->
+          </select>
+          <p class="mt-1 text-xs text-textc-mute">Campo obligatorio.</p>
+        </div>
+      </div>
+
+      <!-- Acciones (chips con check) -->
+      <div>
+        <div class="text-sm mb-2 text-textc-mute">Acciones permitidas</div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <!-- Leer -->
+          <label class="cursor-pointer">
+            <input type="checkbox" class="peer hidden" />
+            <div
+              class="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-surface-900 px-3 py-2 text-sm
+                     peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-checked:text-brand-500 transition">
+              <span class="inline-block h-2 w-2 rounded-full bg-white/30 peer-checked:bg-brand-500"></span>
+              <span>Puedes leer</span>
+            </div>
+          </label>
+
+          <!-- Crear -->
+          <label class="cursor-pointer">
+            <input type="checkbox" class="peer hidden" />
+            <div
+              class="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-surface-900 px-3 py-2 text-sm
+                     peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-checked:text-brand-500 transition">
+              <span class="inline-block h-2 w-2 rounded-full bg-white/30 peer-checked:bg-brand-500"></span>
+              <span>Puedes crear</span>
+            </div>
+          </label>
+
+          <!-- Actualizar -->
+          <label class="cursor-pointer">
+            <input type="checkbox" class="peer hidden" />
+            <div
+              class="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-surface-900 px-3 py-2 text-sm
+                     peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-checked:text-brand-500 transition">
+              <span class="inline-block h-2 w-2 rounded-full bg-white/30 peer-checked:bg-brand-500"></span>
+              <span>Puedes actualizar</span>
+            </div>
+          </label>
+
+          <!-- Eliminar -->
+          <label class="cursor-pointer">
+            <input type="checkbox" class="peer hidden" />
+            <div
+              class="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-surface-900 px-3 py-2 text-sm
+                     peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-checked:text-brand-500 transition">
+              <span class="inline-block h-2 w-2 rounded-full bg-white/30 peer-checked:bg-brand-500"></span>
+              <span>Puedes eliminar</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Botón ghost -->
+      <button type="submit"
+        class="w-full rounded-xl border-2 border-dashed border-brand-500/70 text-brand-500
+               font-semibold py-3 hover:bg-brand-500 hover:text-black transition
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+        Asignar permiso
+      </button>
+    </form>
+  </section>
+
+  <!-- Card: Listado -->
+  <section class="mx-auto w-full max-w-5xl">
+    <div class="rounded-2xl bg-surface-800 border border-white/5 overflow-hidden">
+      <div class="px-6 py-4 border-b border-white/5 font-semibold">Permisos asignados</div>
+
+      <!-- Estado vacío -->
+      <div class="px-6 py-10 text-center text-textc-mute">
+        No hay registros
+      </div>
+
+      <!-- Tabla (opcional; deja comentada si prefieres solo el vacío) -->
+      <!--
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-surface-900/60">
+            <tr class="border-b border-white/5">
+              <th class="px-6 py-3">Perfil</th>
+              <th class="px-6 py-3">Formulario</th>
+              <th class="px-6 py-3">Acciones</th>
+              <th class="px-6 py-3">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/5">
+              <td class="px-6 py-3">—</td>
+              <td class="px-6 py-3">—</td>
+              <td class="px-6 py-3">Leer, Crear, Actualizar, Eliminar</td>
+              <td class="px-6 py-3">
+                <button class="text-brand-500 hover:text-brand-600 mr-3" type="button">Editar</button>
+                <button class="text-red-400 hover:text-red-300" type="button">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      -->
+    </div>
+  </section>
+</div>
