@@ -11,7 +11,9 @@ import {
       IdCard,
       Ruler,
       ShieldCheck,
-      Fingerprint 
+      Fingerprint,
+      User,
+      Box 
 
 } from "lucide-angular";
 
@@ -28,7 +30,9 @@ export function lucideProviders () {
       IdCard,
       Ruler,
       ShieldCheck,
-      Fingerprint 
+      Fingerprint,
+      User,
+      Box 
     })
   );
 }

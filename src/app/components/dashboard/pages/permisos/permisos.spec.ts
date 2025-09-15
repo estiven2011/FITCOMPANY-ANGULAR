@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LucideProviders } from './lucide-providers';
+import { Permisos } from './permisos';
 
-describe('LucideProviders', () => {
-  let component: LucideProviders;
-  let fixture: ComponentFixture<LucideProviders>;
+describe('Permisos', () => {
+  let component: Permisos;
+  let fixture: ComponentFixture<Permisos>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LucideProviders]
+      imports: [Permisos]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LucideProviders);
+    fixture = TestBed.createComponent(Permisos);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
