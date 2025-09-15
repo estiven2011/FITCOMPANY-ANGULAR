@@ -20,11 +20,13 @@ export class Sidebar {
 
   menu: MenuItem[] = [
     { label: 'Overview',    icon: 'LayoutDashboard',         link: 'overview' },
+    { label: 'Usuarios',       icon: 'User',      link: 'usuarios' },
     { label: 'Compras',     icon: 'ShoppingCart', link: 'compras' },
     { label: 'Ventas',      icon: 'ShoppingBasket', link: 'ventas' },
     { label: 'Categorías',  icon: 'ChartBarStacked',     link: 'categorias' },
     { label: 'Formulario',  icon: 'BookText',     link: 'formularios' },
     { label: 'Roles',       icon: 'UserCog',      link: 'roles' },
+    { label: 'Productos',       icon: 'Box',      link: 'productos' },
     { label: 'Perfiles',    icon: 'IdCard',       link: 'perfiles' },
     { label: 'Unidades de Medida',    icon: 'Ruler',        link: 'unidades' },
     { label: 'Permisos',    icon: 'ShieldCheck',  link: 'permisos' },
