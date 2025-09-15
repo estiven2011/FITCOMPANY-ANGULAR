@@ -1,0 +1,152 @@
+<div class="space-y-6">
+  <h2 class="text-center text-xl font-bold">Gestión de Productos</h2>
+
+  <section class="mx-auto w-full max-w-3xl rounded-2xl bg-surface-800 border border-white/5 p-6 sm:p-7">
+    <h3 class="text-lg font-semibold text-brand-500 mb-4">Agregar producto</h3>
+
+    <form class="space-y-5">
+      <div>
+        <label class="block text-sm mb-1">Nombre <span class="text-brand-500">*</span></label>
+        <input
+          type="text"
+          required
+          class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                 focus:border-brand-500 placeholder:text-sm"
+          placeholder="Ej: Proteína Whey 1kg"
+          autocomplete="off"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm mb-1">Descripción</label>
+        <input
+          type="text"
+          class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                 focus:border-brand-500 placeholder:text-sm"
+          placeholder="Breve descripción del producto"
+        />
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm mb-1">Precio <span class="text-brand-500">*</span></label>
+          <input
+            type="text"
+            inputmode="numeric"
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                   focus:border-brand-500 placeholder:text-sm"
+            placeholder="$0"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Stock actual <span class="text-brand-500">*</span></label>
+          <input
+            type="number"
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                   focus:border-brand-500 placeholder:text-sm"
+            placeholder="0"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm mb-1">Stock mínimo <span class="text-brand-500">*</span></label>
+          <input
+            type="number"
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                   focus:border-brand-500 placeholder:text-sm"
+            placeholder="Ej: 5"
+          />
+          <p class="mt-1 text-xs text-textc-mute">Referencia: valor mínimo recomendado.</p>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Stock máximo <span class="text-brand-500">*</span></label>
+          <input
+            type="number"
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                   focus:border-brand-500 placeholder:text-sm"
+            placeholder="Ej: 20"
+          />
+          <p class="mt-1 text-xs text-textc-mute">Referencia: valor máximo recomendado.</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm mb-1">Unidad de medida <span class="text-brand-500">*</span></label>
+          <select
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none focus:border-brand-500"
+          >
+            <option selected disabled>Seleccione…</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Categoría <span class="text-brand-500">*</span></label>
+          <select
+            required
+            class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none focus:border-brand-500"
+          >
+            <option selected disabled>Seleccione…</option>
+          </select>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-xl border-2 border-dashed border-brand-500/70 text-brand-500
+               font-semibold py-3 hover:bg-brand-500 hover:text-black transition
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+      >
+        Agregar
+      </button>
+    </form>
+  </section>
+
+
+  <section class="mx-auto w-full max-w-5xl">
+    <div class="rounded-2xl bg-surface-800 border border-white/5 overflow-hidden">
+      <div class="px-6 py-4 border-b border-white/5 font-semibold">Lista de productos</div>
+      <div class="px-6 py-10 text-center text-textc-mute">
+        No hay registros
+      </div>
+
+      <!-- <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-surface-900/60">
+            <tr class="border-b border-white/5">
+              <th class="px-6 py-3">Nombre</th>
+              <th class="px-6 py-3">Precio</th>
+              <th class="px-6 py-3">Stock</th>
+              <th class="px-6 py-3">Unidad</th>
+              <th class="px-6 py-3">Categoría</th>
+              <th class="px-6 py-3">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/5">
+              <td class="px-6 py-3">—</td>
+              <td class="px-6 py-3">$0</td>
+              <td class="px-6 py-3">0 (mín. 0 máx. 0)</td>
+              <td class="px-6 py-3">—</td>
+              <td class="px-6 py-3">—</td>
+              <td class="px-6 py-3">
+                <button class="text-brand-500 hover:text-brand-600 mr-3" type="button">Editar</button>
+                <button class="text-red-400 hover:text-red-300" type="button">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+      
+    </div>
+  </section>
+</div>

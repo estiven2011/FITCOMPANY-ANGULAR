@@ -1,0 +1,74 @@
+<div class="space-y-6">
+  <h2 class="text-center text-xl font-bold">Gestión de Unidades de Medida</h2>
+
+  <section class="mx-auto w-full max-w-3xl rounded-2xl bg-surface-800 border border-white/5 p-6 sm:p-7">
+    <h3 class="text-lg font-semibold text-brand-500 mb-4">Agregar unidad de medida</h3>
+
+    <form class="space-y-5">
+      <div>
+        <label class="block text-sm mb-1">Nombre de la unidad <span class="text-brand-500">*</span></label>
+        <input
+          type="text"
+          required
+          class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                 focus:border-brand-500 placeholder:text-sm"
+          placeholder="Ej: Kilogramo, Unidad, Gramo"
+          autocomplete="off"
+        />
+        <p class="mt-1 text-xs text-textc-mute">Campo obligatorio.</p>
+      </div>
+
+      <div>
+        <label class="block text-sm mb-1">Descripción (opcional)</label>
+        <input
+          type="text"
+          class="w-full rounded-xl bg-surface-900 border border-white/10 px-4 py-3 outline-none
+                 focus:border-brand-500 placeholder:text-sm"
+          placeholder="Ej: Medida base, peso de alimentos, etc."
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-xl border-2 border-dashed border-brand-500/70 text-brand-500
+               font-semibold py-3 hover:bg-brand-500 hover:text-black transition
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+      >
+        Agregar
+      </button>
+    </form>
+  </section>
+
+  <section class="mx-auto w-full max-w-5xl">
+    <div class="rounded-2xl bg-surface-800 border border-white/5 overflow-hidden">
+      <div class="px-6 py-4 border-b border-white/5 font-semibold">Lista de unidades de medida</div>
+      <div class="px-6 py-10 text-center text-textc-mute">
+        No hay registros
+      </div>
+
+      <!-- <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-surface-900/60">
+            <tr class="border-b border-white/5">
+              <th class="px-6 py-3">Nombre</th>
+              <th class="px-6 py-3">Descripción</th>
+              <th class="px-6 py-3">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/5">
+              <td class="px-6 py-3"></td>
+              <td class="px-6 py-3"></td>
+              <td class="px-6 py-3">
+                <button class="text-brand-500 hover:text-brand-600 mr-3" type="button">Editar</button>
+                <button class="text-red-400 hover:text-red-300" type="button">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+    </div>
+  </section>
+</div>
+
