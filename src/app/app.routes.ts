@@ -1,12 +1,15 @@
 import { Routes } from '@angular/router';
 import { Dashboard } from './components/dashboard/dashboard';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./components/home/home').then(m => m.Home) },
+
   { path: 'login', loadComponent: () => import('./components/login/login').then(m => m.Login) },
 
   {
     path: 'dashboard',
+    canActivate: [authGuard],
     component: Dashboard,
     children: [
       { path: 'overview', loadComponent: () => import('./components/dashboard/pages/overview/overview').then(m => m.Overview) },
@@ -20,7 +23,9 @@ export const routes: Routes = [
       { path: 'unidades-medidas', loadComponent: () => import('./components/dashboard/pages/unidades-medidas/unidades-medidas').then(m => m.UnidadesMedidas) },
       { path: 'permisos', loadComponent: () => import('./components/dashboard/pages/permisos/permisos').then(m => m.Permisos) },
       { path: 'tipos-identificaciones', loadComponent: () => import('./components/dashboard/pages/tipos-identificaciones/tipos-identificaciones').then(m => m.TiposIdentificaciones) },
-
+      { path: '', pathMatch: 'full', redirectTo: 'categorias' }
     ]
   },
+
+  { path: '**', redirectTo: 'login' }
 ];
