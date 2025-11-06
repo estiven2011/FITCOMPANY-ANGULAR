@@ -21,7 +21,7 @@ export class Sidebar {
   private auth = inject(AuthService);
   private router = inject(Router);
 
-  // 🔒 Menú estático (lo mantenemos tal cual)
+  // Menú
   menu: MenuItem[] = [
     { label: 'Overview',               icon: 'LayoutDashboard',   link: 'overview' },
     { label: 'Usuarios',               icon: 'User',              link: 'usuarios' },
@@ -36,8 +36,29 @@ export class Sidebar {
     { label: 'Tipos de Identificacion',icon: 'Fingerprint',       link: 'tipos-identificaciones' }
   ];
 
-  logout() {
+  // --- Modal de confirmación de logout ---
+  logoutConfirmOpen = false;
+
+  openLogoutConfirm() {
+    this.logoutConfirmOpen = true;
+  }
+
+  closeLogoutConfirm() {
+    this.logoutConfirmOpen = false;
+  }
+
+  doLogoutConfirmado() {
+    this.logoutConfirmOpen = false;
+
+    // Limpia sesión
     this.auth.clearSession();
-    this.router.navigate(['/login']);
+
+    // Navega al login y evita volver con Adelante
+    this.router.navigate(['/login'], { replaceUrl: true });
+  }
+
+  // (legacy) si en algún lado quedó (click)="logout()", mantenemos compat.
+  logout() {
+    this.openLogoutConfirm();
   }
 }

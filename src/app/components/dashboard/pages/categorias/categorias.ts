@@ -18,6 +18,7 @@ export class Categorias implements OnInit {
 
   rows: Categoria[] = [];
   loadingList = false;
+
   saving = false;
   okMsg = '';
   errorMsg = '';
@@ -28,82 +29,87 @@ export class Categorias implements OnInit {
     descripcion_categoria: ['', [Validators.maxLength(255)]],
   });
 
-  // === Estado de edición ===
+  // Edición
   editando = false;
   private editId: number | null = null;
 
+  // Confirm modal
+  confirmOpen = false;
+  private pendingDeleteId: number | null = null;
+
   ngOnInit(): void {
-    console.log('[Categorias] ngOnInit');
     this.loadData();
   }
 
+  // --- helpers de mensajes (auto-ocultan a los 4s) ---
+  private autoHideMessages(ms = 4000) {
+    window.setTimeout(() => {
+      this.okMsg = '';
+      this.errorMsg = '';
+    }, ms);
+  }
+  private showOk(msg: string) {
+    this.okMsg = msg;
+    this.errorMsg = '';
+    this.autoHideMessages(4000);
+  }
+  private showError(msg: string) {
+    this.errorMsg = msg;
+    this.okMsg = '';
+    this.autoHideMessages(4000);
+  }
+
+  // --- cargar listado ---
   loadData() {
-    console.log('[Categorias] loadData() START');
     this.loadingList = true;
     this.categoriasSrv.listar().subscribe({
-      next: (rows) => {
-        console.log('[Categorias] listar() OK, rows=', rows);
-        this.rows = rows || [];
-        this.loadingList = false;
-      },
-      error: (e) => {
-        console.log('[Categorias] listar() ERROR', e);
-        this.errorMsg = 'Error cargando categorías';
-        this.loadingList = false;
-      }
+      next: (rows) => { this.rows = rows || []; this.loadingList = false; },
+      error: () => { this.rows = []; this.loadingList = false; this.showError('Error cargando categorías'); }
     });
   }
 
-  // --- Crear / Actualizar ---
+  // --- crear / actualizar ---
   submit() {
     if (this.saving) return;
 
-    // Sanitizar como lo tenemos
+    // sanitizar
     const nombre = (this.form.value.nombre_categoria || '').trim().replace(/\s+/g, ' ');
-    const desc = (this.form.value.descripcion_categoria || '').trim().replace(/\s+/g, ' ');
+    const desc   = (this.form.value.descripcion_categoria || '').trim().replace(/\s+/g, ' ');
 
-    // Validaciones (las que ya tienes)
-    if (!nombre) { this.errorMsg = 'El nombre es obligatorio.'; return; }
+    // validaciones (las tuyas)
+    if (!nombre) return this.showError('El nombre es obligatorio.');
     const PATRON = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s\-.]+$/;
-    if (!PATRON.test(nombre)) { this.errorMsg = 'El nombre solo puede contener letras, espacios, guiones y puntos.'; return; }
-    if (nombre.length > 100) { this.errorMsg = 'El nombre admite máximo 100 caracteres.'; return; }
-    if (desc.length > 200) { this.errorMsg = 'La descripción admite máximo 200 caracteres.'; return; }
+    if (!PATRON.test(nombre)) return this.showError('El nombre solo puede contener letras, espacios, guiones y puntos.');
+    if (nombre.length > 100) return this.showError('El nombre admite máximo 100 caracteres.');
+    if (desc.length > 200) return this.showError('La descripción admite máximo 200 caracteres.');
 
     this.saving = true;
     this.okMsg = '';
     this.errorMsg = '';
 
     const body = { nombre_categoria: nombre, descripcion_categoria: desc };
-
     const req$ = (this.editando && this.editId != null)
       ? this.categoriasSrv.actualizar(this.editId, body)
       : this.categoriasSrv.crear(body);
 
     req$
-      .pipe(finalize(() => {
-        // SIEMPRE se ejecuta, éxito o error
-        this.saving = false;
-        setTimeout(() => { this.okMsg = ''; this.errorMsg = ''; }, 3000);
-      }))
+      .pipe(finalize(() => { this.saving = false; }))
       .subscribe({
         next: (res) => {
-          this.okMsg = res?.message || (this.editando ? 'Actualizado correctamente.' : 'Guardado correctamente.');
+          this.showOk(res?.message || (this.editando ? 'Categoría actualizada.' : 'Categoría creada.'));
           this.loadData();
-          // reset de edición + form
           this.editando = false;
           this.editId = null;
           this.form.reset({ nombre_categoria: '', descripcion_categoria: '' });
           window.scrollTo({ top: 0, behavior: 'smooth' });
         },
         error: (e) => {
-          // ejemplo: “Ya existe una categoría con ese nombre.”
-          this.errorMsg = e?.error?.message || 'Error al guardar la categoría.';
+          this.showError(e?.error?.message || 'Error al guardar la categoría.');
         }
       });
   }
 
-
-  // --- Editar: precarga el form y activa modo edición ---
+  // --- edición ---
   editar(c: Categoria) {
     this.editando = true;
     this.editId = c.id_categoria ?? null;
@@ -117,27 +123,62 @@ export class Categorias implements OnInit {
   cancelarEdicion() {
     this.editando = false;
     this.editId = null;
-    this.form.reset({
-      nombre_categoria: '',
-      descripcion_categoria: ''
-    });
+    this.form.reset({ nombre_categoria: '', descripcion_categoria: '' });
   }
 
-  // --- Eliminar ---
-  eliminar(id: number) {
-    const confirmar = confirm('¿Seguro que deseas eliminar esta categoría?');
-    if (!confirmar) return;
+  // --- confirmación estilizada ---
+  confirmarEliminar(c: Categoria) {
+    this.pendingDeleteId = c.id_categoria ?? null;
+    this.confirmOpen = true;
+  }
+
+  closeConfirm() {
+    this.confirmOpen = false;
+    this.pendingDeleteId = null;
+  }
+
+  doEliminarConfirmado() {
+    if (this.pendingDeleteId == null) { this.closeConfirm(); return; }
+    const id = this.pendingDeleteId;
+
+    // cerramos modal y limpiamos id pendiente
+    this.confirmOpen = false;
+    this.pendingDeleteId = null;
 
     this.categoriasSrv.eliminar(id).subscribe({
       next: (res) => {
-        console.log('[Categorias] eliminar() OK', res);
-        this.okMsg = res?.message || '✅ Categoría eliminada correctamente.';
+        this.showOk(res?.message || 'Categoría eliminada correctamente.');
         this.loadData();
       },
       error: (e) => {
-        console.log('[Categorias] eliminar() ERROR', e);
-        // si luego el back devuelve 409 con detalle, aquí lo manejamos
-        this.errorMsg = e?.error?.message || 'Error eliminando';
+        // == detalle 409: igual que en React (lista de productos + sufijo) ==
+        if (e?.status === 409 && e?.error) {
+          const err = e.error as {
+            message?: string;
+            requiresUpdateProducts?: boolean;
+            productos?: string[];
+            totalProductos?: number;
+            truncated?: boolean;
+          };
+
+          if (err.requiresUpdateProducts) {
+            const baseMsg =
+              err.message ||
+              'No se puede eliminar la categoría porque está en uso por producto(s). Debes editar esos productos y cambiar la categoría antes de eliminarla.';
+
+            const lista = (err.productos || []).map(n => `• ${n}`).join('\n');
+            const sufijo =
+              err.truncated && err.totalProductos
+                ? `\n\n(Se muestran solo algunos; total: ${err.totalProductos})`
+                : '';
+
+            this.showError(`${baseMsg}\n\n${lista}${sufijo}`);
+            return;
+          }
+        }
+
+        // otros errores
+        this.showError(e?.error?.message || 'Error eliminando la categoría.');
       }
     });
   }

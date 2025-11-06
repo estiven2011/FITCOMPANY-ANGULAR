@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 import { Dashboard } from './components/dashboard/dashboard';
 import { authGuard } from './shared/guards/auth.guard';
+import { loginGuard } from './shared/guards/login.guard'; 
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./components/home/home').then(m => m.Home) },
 
-  { path: 'login', loadComponent: () => import('./components/login/login').then(m => m.Login) },
+  { path: 'login', canActivate: [loginGuard],
+    loadComponent: () => import('./components/login/login').then(m => m.Login) },
 
   {
     path: 'dashboard',
