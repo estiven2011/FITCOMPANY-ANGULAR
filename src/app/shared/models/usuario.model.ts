@@ -1,7 +1,6 @@
 import { FormularioMod } from './formulario.model';
 
 export interface TokenPayload {
-  // campos que vienen en tu JWT de login exitoso
   tipo?: number;
   identificacion?: string;
   nombre?: string;
@@ -11,6 +10,7 @@ export interface TokenPayload {
   rol?: string;
   perfil_id?: number;
   perfil_rol?: number;
+  perfil_nombre?: string;     
   formularios: FormularioMod[];
   iat?: number;
   exp?: number;
